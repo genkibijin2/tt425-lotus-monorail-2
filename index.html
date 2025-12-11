@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script type="text/javascript" src="js/GlslCanvas.js"></script>
+        <title>TT425 Lotus Monorail V2</title>
+	    <link rel="icon" type"image/x-icon" href="/Favicon.ico">      
+</head>
+
+<!---PAGE CSS STYLINGS--->
+<style>
+@font-face{
+	font-family: 'Inter';
+	src: url(fonts/InterThin24.ttf);
+}
+.theMainBit{
+  background-color: #f1b8ff;
+    font-family: 'Inter';
+    justify-content: center;
+    align-content: center;
+    max-width: 1024px;
+    max-height: 768px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+.glslCanvas{
+  image-rendering: auto;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+		display: block;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+}
+.titleBlock{
+    border: 1px solid transparent;
+	  border-radius: 20px;
+    box-shadow: 5px 4px 5px black;
+    margin-top: -25px;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-shadow:
+    1px 1px 2px black,
+    0 0 1em grey,
+    0 0 0.2em darkgray;
+    background: none;
+    color: white;
+    backdrop-filter: blur(6px);
+    backdrop-filter: invert(100%);
+    min-width: 200px;
+    app-region: drag;
+}
+.titlebar{
+  background-image: none;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  border: none;
+  border-radius: 0px;
+  display: block;
+  max-height: 24px;
+}
+</style>
+
+
+<!---DEDICATED SHADER SPACE--->
+<body class="theMainBit">
+<div class='canvasTest' id='theBackground'>
+<canvas class="glslCanvas" width="854" height="480" id="shaderCanvas"
+data-textures="shaders/cardtex.png"
+data-fragment-url="shaders/balatro.frag">
+</canvas>
+<script type="text/javascript">
+main();
+function main(){
+const canvas = document.querySelector(".glslCanvas");
+const gl = canvas.getContext("webgl");
+if (!gl){
+        alert("Your browser doesn't support shader backgrounds, so a plain background will be used...");
+        }
+const sandbox = new GlslCanvas(canvas);
+        
+                }
+</script>
+</div>
+<!---END OF DEDICATED SHADER SPACE--->
+
+<style>
+.navbutton{
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  border: none;
+  border-radius: 80px;
+}
+.navbutton:hover{
+  transform:  scale(1.01);
+	translate: -1px -1px;
+	box-shadow: 1px 1px black;
+}
+</style>
+<div class="titlebar">
+<div id="buttonsholder">
+  <button id="quit" class="navbutton" style="background-image:url(img/quitbutton.png);max-height: 24px;max-width: 24px;min-height: 24px;min-width: 24px;z-index: 7;"></button>
+  <button id="minimize" class="navbutton" style="background-image:url(img/minbutton.png);max-height: 24px;max-width: 24px;min-height: 24px;min-width: 24px;z-index: 7;"></button>
+  <button id="maximize" class="navbutton" style="background-image:url(img/maxbutton.png);max-height: 24px;max-width: 24px;min-height: 24px;min-width: 24px;z-index: 7;"></button>     
+</div>  
+<!---TITLEBAR JAVASCRIPT-->
+
+<!---////////////////////-->
+
+
+</div><!---END TITLE BAR-->
+<div id="programTitle" class="titleBlock" style="font-size: 24pt;text-align:center;">TT425 Lotus Monorail V2</div>
+<!---------------------------------------------------------------------------------------------------->
+<div id="mainContentWrapper">
+
+<!---performance info box style-->
+<style>
+.perfMonitor{
+  background: linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 7%, rgba(204, 255, 204, 1) 22%, rgba(255, 255, 255, 1) 30%);
+}
+.theCable{
+  position: absolute;
+  left:70px;
+  top:8px;
+  z-index: -1;
+}
+</style>
+<div id="theCable">
+  <img class="theCable" src="img/cable.png"></img>
+</div>
+<p id="info" style="font-size: 18px;text-align: left;border:
+           1px solid black;border-radius: 20px;padding:4px;position: absolute;left:
+           160px;top:35px;" class="perfMonitor">
+</p><!---THIS P HOLDS PERFORMANCE MODE INFORMATION-->
+
+<!---HELPER BOX, MOUSEOVERCONTEXT MENU HELP!!-->
+<style>
+  .helperDaemon{
+    background: black;
+    color: white;
+    box-shadow: 1px 1px white;
+  }
+  .helperDaemon:hover{
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  border: none;
+  transform:  scale(1.03);
+  translate: -1px -1px;
+	box-shadow: 0px 0px black;
+  background: white;
+  color: black;
+  }
+</style>
+<div id="helper" class="helperDaemon" style="font-size: 18px;text-align: left;border:
+           1px solid black;border-radius: 20px;padding:4px;position: absolute;left:
+           10px;top:730px;word-wrap: no;max-width:1000px;">
+          A helping hand...
+</div>
+<!---//////////////////////////////////////////////-->
+
+</div><!---End of main content square-->
+</body>
+
+<!---SCRIPTS-->
+<script src="./renderer.js" ></script> 
+</html>
