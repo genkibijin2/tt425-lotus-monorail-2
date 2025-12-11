@@ -10,10 +10,17 @@ contextBridge.exposeInMainWorld('versions', {
 const { ipcRenderer } = require("electron");
 document.addEventListener('DOMContentLoaded', function () {
   let information = document.getElementById('info');
-  let minimizebutton = document.getElementById('minimize');
-  minimizebutton.addEventListener("click", () => {
+  let FileAppendButton = document.getElementById('fileAppender');
+  let minimizeButton = document.getElementById('minimize');
+  minimizeButton.addEventListener("click", () => {
+    ipcRenderer.send("minimizeWindow");
+  });
+
+
+  FileAppendButton.addEventListener("click", () => {
     //What happens whe minimize is clicked, sent to main.
     let performanceSetting = "Test example to append to file";
     ipcRenderer.send("saveText", performanceSetting);
   })
 });
+

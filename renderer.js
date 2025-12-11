@@ -32,6 +32,7 @@ qualityToggle.addEventListener("click", () => {
     //first level of pixelation
     performanceMode++;
     information.innerText = "Performance Mode I";
+    helper.innerText = "Mode set to \"Performance Mode I\"";
     information.style.color = '#240B0B';
     information.style.background = 'linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 11%, rgba(204, 255, 204, 1) 24%, rgba(255, 255, 255, 1) 44%)';
     document.getElementById('shaderCanvas').setAttribute("width","427");
@@ -40,6 +41,7 @@ qualityToggle.addEventListener("click", () => {
     else if(performanceMode == 1){
     performanceMode++;
     information.innerText = "Performance Mode II";
+    helper.innerText = "Mode set to \"Performance Mode II\"";
     information.style.color =  '#5C1C1C';
     information.style.background = 'linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 24%, rgba(204, 255, 204, 1) 42%, rgba(255, 255, 255, 1) 68%)';
     document.getElementById('shaderCanvas').setAttribute("width","213.5");
@@ -48,6 +50,7 @@ qualityToggle.addEventListener("click", () => {
     else if(performanceMode == 2){
     performanceMode++;
     information.innerText = "Performance Mode III";
+    helper.innerText = "Mode set to \"Performance Mode III\"";
     information.style.color =  '#942E2E';
     information.style.background = 'linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 27%, rgba(204, 255, 204, 1) 59%, rgba(255, 255, 255, 1) 94%)';
     document.getElementById('shaderCanvas').setAttribute("width","106.75");
@@ -59,6 +62,7 @@ qualityToggle.addEventListener("click", () => {
     
     performanceMode++;
     information.innerText = "Performance Mode IV";
+    helper.innerText = "Mode set to \"Performance Mode IV\"";
     information.style.color =  '#DE4747';
     information.style.background = 'linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 72%, rgba(204, 255, 204, 1) 90%, rgba(255, 255, 255, 1) 100%)';
     document.getElementById('shaderCanvas').setAttribute("width","2");
@@ -71,6 +75,7 @@ qualityToggle.addEventListener("click", () => {
     document.getElementById('shaderCanvas').style.imageRendering = "pixelated";
     performanceMode++;
     information.innerText = "Performance Mode V Extreme";
+    helper.innerText = "Mode set to \"Performance Mode V Extreme\"";
     information.style.color = 'black';
     information.style.background = 'rgba(102, 255, 204, 1)';
     document.getElementById('shaderCanvas').setAttribute("width","1");
@@ -86,15 +91,15 @@ qualityToggle.addEventListener("click", () => {
     
     performanceMode = 0;
     information.innerText = "Standard Mode";
+    helper.innerText = "Mode set to \"Standard Mode\"";
     information.style.color = 'black';
     information.style.background = 'linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 7%, rgba(204, 255, 204, 1) 22%, rgba(255, 255, 255, 1) 30%)';
     document.getElementById('shaderCanvas').setAttribute("width","854");
     document.getElementById('shaderCanvas').setAttribute("height","480");
-        document.getElementById('programTitle').style.background = 'none';
+    document.getElementById('programTitle').style.background = 'none';
     document.getElementById('programTitle').style.backdropFilter = 'blur(6px)';
     document.getElementById('programTitle').style.backdropFilter = 'invert(100%)';
     document.getElementById('shaderCanvas').style.imageRendering = "auto";
-
     }
 });
 //--End of performance controls-----------------------------------------//
@@ -109,4 +114,10 @@ programTitleBlock.addEventListener("mouseenter", () => {
 information.addEventListener("mouseenter", () => {
     var myCurrentPerformanceMode = information.innerText;
     helper.innerText = "Current performance mode: " + myCurrentPerformanceMode;
+});
+
+//Minimize button helper section
+let minimizeButton = document.getElementById('minimize');
+minimizeButton.addEventListener("mouseenter", () => {
+    helper.innerText = "Minimize the window";
 });

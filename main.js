@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    //titleBarStyle: 'hidden',
+    titleBarStyle: 'hidden',
     width: 1024,
     height: 768, 
     resizable: false,
@@ -18,6 +18,15 @@ const createWindow = () => {
     }
     
   })
+  //Minimize window passthru
+  ipcMain.on("minimizeWindow", (event) => {
+  try{
+  win.minimize();
+  }
+  catch(err){
+  console.error(err);
+  }
+  });
   win.loadFile('index.html')
 }
 app.whenReady().then(() => {
@@ -32,6 +41,8 @@ catch(err){
   console.error(err);
 }
 });
+
+
 
 //--MAC OS DARWIN BEHAVIOUR--//
 app.on('window-all-closed', () => {
