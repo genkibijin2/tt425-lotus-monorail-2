@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main');
 const path = require('node:path');
 const fs = require("fs");
+const drivelist = require('drivelist');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -13,7 +14,7 @@ const createWindow = () => {
     webPreferences:{
       nodeIntegration: true,
       //enableRemoteModule: true,
-      //contextIsolation: false,
+      contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
     }
     
@@ -27,21 +28,58 @@ const createWindow = () => {
   console.error(err);
   }
   });
-  win.loadFile('index.html')
+  win.loadFile('index.html');
+
+
+
+
+  
 }
+
+
+
+
 app.whenReady().then(() => {
   createWindow() 
 });
 
-ipcMain.on("saveText", (event, performanceSetting) => {
+//Method to save text to a file.
+ipcMain.on("saveText", (event, text2beSaved) => {
 try{
-  fs.appendFileSync("c:\\sawfiles_two\\FileGeneratedFromElectron.txt", performanceSetting.toString());
+  fs.appendFileSync("c:\\sawfiles_two\\FileGeneratedFromElectron.txt", text2beSaved.toString());
 }
 catch(err){
   console.error(err);
 }
 });
 
+//Method to read contents of directory
+ipcMain.on("readSawFilesFolder", (event, sawFilesDirectory) => {
+try{
+  fs.readdir(sawFilesDirectory, (err, files) => {
+  files.forEach(file => {
+    console.log("Found File: " + file);
+    event.reply("sawFilesSentBack", file);
+    console.log(file + " sent to preload.js");
+    
+    //SENDS FILES BACK TO PRELOAD, USE PRELOAD TO CHANGE TEXT//
+  });
+});
+}
+catch(err){
+  console.error(err);
+}
+});
+
+async function getdrives(){
+
+return drives;
+}
+//Method to list out USB devices (console)
+ipcMain.on("listUSBDevices", async (event) => {
+const drives = await drivelist.list(); 
+console.log(drives); 
+});
 
 
 //--MAC OS DARWIN BEHAVIOUR--//

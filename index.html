@@ -22,6 +22,7 @@
     overflow-y: hidden;
     overflow-x: hidden;
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
 .glslCanvas{
   image-rendering: auto;
@@ -46,8 +47,7 @@
     0 0 0.2em darkgray;
     background: none;
     color: white;
-    backdrop-filter: blur(6px);
-    backdrop-filter: invert(100%);
+    backdrop-filter: blur(6px) invert(100%) hue-rotate(260deg);
     min-width: 200px;
     app-region: drag;
 }
@@ -69,7 +69,7 @@
 <div class='canvasTest' id='theBackground'>
 <canvas class="glslCanvas" width="854" height="480" id="shaderCanvas"
 data-textures="shaders/cardtex.png"
-data-fragment-url="shaders/balatro.frag">
+data-fragment-url="shaders/WaveCeilingPurple.frag">
 </canvas>
 <script type="text/javascript">
 main();
@@ -112,7 +112,7 @@ const sandbox = new GlslCanvas(canvas);
 </div><!---END TITLE BAR-->
 <div id="programTitle" class="titleBlock" style="font-size: 24pt;text-align:center;">TT425 Lotus Monorail V2</div>
 <!---------------------------------------------------------------------------------------------------->
-<div id="mainContentWrapper">
+<div id="mainContentWrapper" style="display:grid;margin-top: 50px;padding: 20px;">
 
 <!---performance info box style-->
 <style>
@@ -133,6 +133,83 @@ const sandbox = new GlslCanvas(canvas);
            1px solid black;border-radius: 20px;padding:4px;position: absolute;left:
            160px;top:35px;" class="perfMonitor">
 </p><!---THIS P HOLDS PERFORMANCE MODE INFORMATION-->
+
+<!---Wrapper for middle section of screen, will hold left and right files/USB-->
+<style>
+#fileListsWrapper{
+  display: block;
+  border: 2px solid limegreen;
+  justify-content: space-between;
+  align-items: center;
+  }
+#mainContentWrapper{
+  border: 2px solid mediumspringgreen;
+}
+#userFolderList{
+  float: left;
+}
+#USBFolderList{
+  float: right;
+}
+.fileList{
+  font-size: 24px;
+  border: 2px solid rgb(32, 94, 73);
+  border-radius: 10px;
+  max-width: 47%;
+  min-width: 47%;
+  color: white;
+  padding: 10px;
+  max-height: 500px;
+  overflow-y: scroll;
+  backdrop-filter: blur(10px) hue-rotate(260deg);
+  word-wrap:break-word;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.fileList > span{
+  text-shadow:
+  1px 1px 2px rgb(0, 0, 0),
+  0 0 1em rgb(8, 8, 8),
+  0 0 0.2em rgb(0, 0, 0);
+}
+#buttonToolbar{
+  border: 2px solid purple;
+}
+</style>
+<div id="fileListsWrapper">
+  <div id="userFolderList" class="fileList"> <!---left File browser-->
+  <!---list of files in chosen folder-->
+
+
+
+
+  </div>
+  <div id="USBFolderList" class="fileList"> <!---Right USB/Network browser-->
+    <span>1. 045069703959306.programTitle
+    reallyreallylongstringggggggggggggggggggggggggggggggggggggggggg
+    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
+    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
+    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
+    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
+    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
+   testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
+   testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/></span>
+
+
+
+
+
+
+  </div>
+</div>
+<br>
+<div id="buttonToolbar"> <!---HOLDS BUTTONS FOR ACTIONS, CONVERSION ETC-->
+<button id="loadSawFiles">
+  refresh saw files
+</button>
+</div>
+
 
 <!---HELPER BOX, MOUSEOVERCONTEXT MENU HELP!!-->
 <style>

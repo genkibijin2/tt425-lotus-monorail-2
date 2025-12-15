@@ -1,3 +1,4 @@
+
 //Helper Info Box
 //Add mouseover events to everything that change the innerText to a description of
 //the moused over element...
@@ -104,6 +105,7 @@ qualityToggle.addEventListener("click", () => {
 });
 //--End of performance controls-----------------------------------------//
 
+//--------------------------HELPER DESCRIPTIONS------------------------------//
 //title bar methods
 const programTitleBlock = document.getElementById('programTitle');
 programTitleBlock.addEventListener("mouseenter", () => {
@@ -116,8 +118,22 @@ information.addEventListener("mouseenter", () => {
     helper.innerText = "Current performance mode: " + myCurrentPerformanceMode;
 });
 
+//Left List Helper Section
+let leftHandList = document.getElementById('userFolderList');
+leftHandList.addEventListener("mouseenter", () => {
+    helper.innerText = "List of files on your system";
+});
+
+//Right List Helper Section
+let RightHandList = document.getElementById('USBFolderList');
+RightHandList.addEventListener("mouseenter", () => {
+    helper.innerText = "List of files on USB/Network Target";
+});
+
 //Minimize button helper section
 let minimizeButton = document.getElementById('minimize');
 minimizeButton.addEventListener("mouseenter", () => {
     helper.innerText = "Minimize the window";
 });
+//--------------------------HELPER DESCRIPTIONS------------------------------//
+
