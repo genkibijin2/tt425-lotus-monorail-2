@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let refreshSawButton = document.getElementById('loadSawFiles');
   var numberOfFilesInFolder = 0;
   let USBFolderList = document.getElementById('USBFolderList');
+  let sawFilesLocationDropDown = document.getElementById('codes');
   const helper = document.getElementById('helper');
   //----------------------------------------------------------------------//
 
@@ -36,7 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
     ipcRenderer.send("listUSBDevices");
     numberOfFilesInFolder = 0;
     leftHandFileList.innerHTML = "";
-    ipcRenderer.send("readSawFilesFolder", "c:\\sawfiles_two\\");
+    var dropdownValue = sawFilesLocationDropDown.value;
+    var sawFileFolder = sawFilesLocationDropDown.options[sawFilesLocationDropDown.selectedIndex].text;
+    console.log(sawFileFolder);
+    ipcRenderer.send("readSawFilesFolder", sawFileFolder);
                             });
   ipcRenderer.on("sawFilesSentBack", (event, nameOfFile) => {
       //console.log(message);
@@ -62,14 +66,15 @@ document.addEventListener('DOMContentLoaded', function () {
       let nameOfDrive = (DrivesInfo[currentSelectedDrive].name);
       let freespaceInGB = parseFloat(DrivesInfo[currentSelectedDrive].available);
       freespaceInGB = Number(((freespaceInGB/1000000000).toFixed(2)));
-
+      imgNumber = parseInt(currentSelectedDrive);
+      if(imgNumber > 8){ imgNumber = 0;}
       if(drivePATH != "C:\\" && drivePATH != "S:\\" &&
         drivePATH != "Y:\\" && drivePATH != "Z:\\"
         && drivePATH != "W:\\"
       ){
         
         USBFolderList.innerHTML += ("<button class='validUSB'>" +
-         "<img src='img/disk" + currentSelectedDrive + ".png'></img><br/>"
+         "<img src='img/disk" + imgNumber + ".png'></img><br/>"
         + "<span><u>Drive " + currentSelectedDrive + ":</u><br/> " + drivePATH +
         "<br/> " + nameOfDrive + "<br/> Free Space: " + freespaceInGB +
         "GB" + "</span></button></span>&nbsp;");
@@ -77,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
       else{
         USBFolderList.innerHTML +=
         ("<button class='driveBox'>" +
-         "<img src='img/mac" + currentSelectedDrive + ".png'></img><br/>"
+         "<img src='img/mac" + imgNumber + ".png'></img><br/>"
         + "<span><u>Drive " + currentSelectedDrive + ":</u><br/> " + drivePATH +
         "<br/> " + nameOfDrive + "<br/> Free Space: " + freespaceInGB +
         "GB" + "</span></button>&nbsp;");
@@ -89,10 +94,17 @@ document.addEventListener('DOMContentLoaded', function () {
     var ValidUsbTaggedBoxes = document.getElementsByClassName("validUSB");
     for (ValidIndex = 0; ValidIndex < ValidUsbTaggedBoxes.length; ValidIndex++){
       ValidUsbTaggedBoxes[ValidIndex].addEventListener("mouseenter", () => {
-        
         helper.innerText = "Select this USB";
+      });
+    }
+    //add listeners to all inaccessible drives
+    var simplyDriveBoxes = document.getElementsByClassName("driveBox");
+    for (boxIndex = 0; boxIndex < simplyDriveBoxes.length; boxIndex++){
+      simplyDriveBoxes[boxIndex].addEventListener("mouseenter", () =>{
+        helper.innerText = "Cannot use this drive...";
       })
     }
+    
     
     
   });

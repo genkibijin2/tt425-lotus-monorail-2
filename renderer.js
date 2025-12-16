@@ -134,5 +134,11 @@ let minimizeButton = document.getElementById('minimize');
 minimizeButton.addEventListener("mouseenter", () => {
     helper.innerText = "Minimize the window";
 });
+
+//Path Selection
+let sawFolderPicker = document.getElementById('codes');
+sawFolderPicker.addEventListener("mouseenter", () => {
+    helper.innerText = "Choose your .prt file location";
+});
 //--------------------------HELPER DESCRIPTIONS------------------------------//
 

@@ -174,10 +174,9 @@ const sandbox = new GlslCanvas(canvas);
   0 0 0.2em rgb(0, 0, 0);
 }
 #buttonToolbar{
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
 }
 .underOverLine{
-  text-decoration: wavy underline #e169ff 4px;;
   margin-left: 18%;
   width: 100%;
   animation-name: grow-shrink;
@@ -188,10 +187,16 @@ const sandbox = new GlslCanvas(canvas);
 @keyframes grow-shrink{
  	0% {
  		font-size:28px;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0),
+            0 0 1em rgb(8, 8, 8),
+          0 0 0.2em rgb(0, 0, 0);
  	}
  	100%{
  		font-size:30px;
  		color: rgb(249, 164, 252);
+    text-shadow: 5px 5px 5px rgb(0, 0, 0),
+            5 5 1em rgb(8, 8, 8),
+          6 6 0.2em rgb(0, 0, 0);
  	}
  }
 .driveBox{
@@ -231,14 +236,58 @@ const sandbox = new GlslCanvas(canvas);
   color: rgb(0, 0, 0);
   transform:  scale(0.99);
 }
+#codes{
+  float: top;
+}
+select {
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+	font-size:24px;
+	color: white;
+ 	background: #3c755a;
+ 	border: 2px solid black;
+ 	border-radius: 10px;
+ 	text-align: center;
+ 	justify-content: center;
+}
+select:hover{
+	background: #3c799a;
+	transform:  scale(1.03);
+	translate: -2px -2px;
+	box-shadow: 2px 2px black;
+}
+select:focus{
+	background: #9F7AAA;
+}
+option{
+	background: #9F7FFF;
+}
+option:first-of-type{
+	background: indianred;
+
+}
+option:last-of-type{
+	background: #876CD8;
+}
+#selectorBox{
+  position: absolute;
+  top: 85px;
+  left: 29px;
+}
 </style>
+<div class="SawFilesSelection" id="selectorBox">
+  <select id='codes' name='codes'>
+			<option value='Artevo Matlist'>C:\\Sawfiles_two\\</option>
+			<option value='Artevo Kaleido Matlist'>C:\\Sawfiles_test\\</option>
+		</select>
+</div>
 <div id="fileListsWrapper">
+  
   <div id="userFolderList" class="fileList"> <!---left File browser-->
   <!---list of files in chosen folder-->
   </div>
   <div id="USBFolderList" class="fileList"> <!---Right USB/Network browser-->
     <span class="underOverLine">Loading Available Drives...</span><br/>
-    <span style="margin-left:38%">Please Wait...</span>
+    <span style="margin-left:37%">Please Wait...</span>
 
 
 
