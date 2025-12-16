@@ -66,8 +66,8 @@ qualityToggle.addEventListener("click", () => {
     helper.innerText = "Mode set to \"Performance Mode IV\"";
     information.style.color =  '#DE4747';
     information.style.background = 'linear-gradient(0deg,rgba(102, 255, 204, 1) 0%, rgba(145, 255, 204, 1) 72%, rgba(204, 255, 204, 1) 90%, rgba(255, 255, 255, 1) 100%)';
-    document.getElementById('shaderCanvas').setAttribute("width","2");
-    document.getElementById('shaderCanvas').setAttribute("height","2");
+    document.getElementById('shaderCanvas').setAttribute("width","3");
+    document.getElementById('shaderCanvas').setAttribute("height","3");
     
     }
     else if(performanceMode == 4){
@@ -98,8 +98,7 @@ qualityToggle.addEventListener("click", () => {
     document.getElementById('shaderCanvas').setAttribute("width","854");
     document.getElementById('shaderCanvas').setAttribute("height","480");
     document.getElementById('programTitle').style.background = 'none';
-    document.getElementById('programTitle').style.backdropFilter = 'blur(6px)';
-    document.getElementById('programTitle').style.backdropFilter = 'invert(100%)';
+    document.getElementById('programTitle').style.backdropFilter = 'blur(6px) invert(100%) hue-rotate(260deg)';
     document.getElementById('shaderCanvas').style.imageRendering = "auto";
     }
 });

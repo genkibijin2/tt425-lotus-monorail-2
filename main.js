@@ -1,7 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main');
 const path = require('node:path');
 const fs = require("fs");
-const drivelist = require('drivelist');
+//const drivelist = require('drivelist');
+const { getDriveList} = require('node-drivelist');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -71,14 +72,12 @@ catch(err){
 }
 });
 
-async function getdrives(){
 
-return drives;
-}
 //Method to list out USB devices (console)
 ipcMain.on("listUSBDevices", async (event) => {
-const drives = await drivelist.list(); 
-console.log(drives); 
+const drives = await getDriveList(); 
+event.reply("USBdevicesSentBack", drives);
+console.log("Drive data sent to preload.js => ", drives);
 });
 
 

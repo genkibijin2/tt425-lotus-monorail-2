@@ -138,12 +138,12 @@ const sandbox = new GlslCanvas(canvas);
 <style>
 #fileListsWrapper{
   display: block;
-  border: 2px solid limegreen;
+  /*border: 2px solid limegreen; */
   justify-content: space-between;
   align-items: center;
   }
 #mainContentWrapper{
-  border: 2px solid mediumspringgreen;
+  /* border: 2px solid mediumspringgreen; */
 }
 #userFolderList{
   float: left;
@@ -176,25 +176,69 @@ const sandbox = new GlslCanvas(canvas);
 #buttonToolbar{
   border: 2px solid purple;
 }
+.underOverLine{
+  text-decoration: wavy underline #e169ff 4px;;
+  margin-left: 18%;
+  width: 100%;
+  animation-name: grow-shrink;
+ 	animation-duration: 1s;
+ 	animation-iteration-count: infinite;
+ 	animation-direction:alternate;
+}
+@keyframes grow-shrink{
+ 	0% {
+ 		font-size:28px;
+ 	}
+ 	100%{
+ 		font-size:30px;
+ 		color: rgb(249, 164, 252);
+ 	}
+ }
+.driveBox{
+  color: rgb(3, 61, 56);
+  background: #e0ffe2;
+  border: 2px solid rgb(164, 219, 252);
+  border-radius: 20px;
+  align-content: center;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  line-height: 15px;
+  max-width: 100px;
+}
+.driveBox:hover{
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  background: rgb(236, 122, 122);
+  color: rgb(164, 223, 247);
+  transform:  scale(0.97);
+  opacity: 50%;
+}
+.validUSB{
+  color: mediumspringgreen;
+  background: #252525;
+  border: 2px solid mediumspringgreen;
+  border-radius: 20px;
+  align-content: center;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  line-height: 15px;
+  max-width: 100px;
+}
+.validUSB:hover{
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  background: rgb(114, 247, 158);
+  color: rgb(0, 0, 0);
+  transform:  scale(0.99);
+}
 </style>
 <div id="fileListsWrapper">
   <div id="userFolderList" class="fileList"> <!---left File browser-->
   <!---list of files in chosen folder-->
-
-
-
-
   </div>
   <div id="USBFolderList" class="fileList"> <!---Right USB/Network browser-->
-    <span>1. 045069703959306.programTitle
-    reallyreallylongstringggggggggggggggggggggggggggggggggggggggggg
-    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
-    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
-    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
-    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
-    testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
-   testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>
-   testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/>testInfo.<br/></span>
+    <span class="underOverLine">Loading Available Drives...</span><br/>
+    <span style="margin-left:38%">Please Wait...</span>
 
 
 
@@ -206,7 +250,7 @@ const sandbox = new GlslCanvas(canvas);
 <br>
 <div id="buttonToolbar"> <!---HOLDS BUTTONS FOR ACTIONS, CONVERSION ETC-->
 <button id="loadSawFiles">
-  refresh saw files
+  Refresh
 </button>
 </div>
 
