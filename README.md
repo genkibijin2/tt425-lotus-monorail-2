@@ -3,5 +3,7 @@ Porting the original to electron and continuing from there...Oh Yes...
 
 ![ScreenShotGif161225](https://github.com/user-attachments/assets/20cfd33c-e1d4-4647-8ae1-20f88699bf25)
 <br>
-<img width="1066" height="803" alt="Untitled" src="https://github.com/user-attachments/assets/71c66f5c-1045-4b1b-97cf-b421a5a54d50" />
+<img width="1026" height="770" alt="Screenshot2" src="https://github.com/user-attachments/assets/82d809c5-de91-41d0-aac0-8b266dd514d0" />
+
+
 
