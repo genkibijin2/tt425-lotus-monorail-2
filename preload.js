@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var numberOfFilesInFolder = 0;
   let USBFolderList = document.getElementById('USBFolderList');
   let sawFilesLocationDropDown = document.getElementById('codes');
+  const loadingBox = document.getElementById('loadingBlock');
   const helper = document.getElementById('helper');
   //----------------------------------------------------------------------//
 
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   
   refreshSawButton.addEventListener("click", () => {
+    loadingBox.style.opacity = "100%";
     ipcRenderer.send("listUSBDevices");
     numberOfFilesInFolder = 0;
     leftHandFileList.innerHTML = "";
@@ -106,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     
-    
+   loadingBox.style.opacity = "0%"; 
   });
 
 
