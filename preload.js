@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   refreshSawButton.addEventListener("click", () => {
+    rightHandList.innerHTML = ("<div class='loader'>Loading Available Drives...</div>" +
+      "<div class='moonBall'></div>" +
+      "<div class='loader' style='margin-left:37%'>Please Wait...</div>" +
+      "");
     loadingBox.style.opacity = "100%";
     helper.innerText = "Refreshing USB Drives and .prt files...";
     refreshSawButton.style.backgroundImage = "url(img/waves.gif)";

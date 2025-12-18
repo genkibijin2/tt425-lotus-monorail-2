@@ -191,6 +191,23 @@ const sandbox = new GlslCanvas(canvas);
    top: 660px;
    display: flex;
 }
+
+.loader {
+  width: 100%;
+  font-size: 36px;
+  
+  font-family: system-ui,sans-serif;
+  font-weight: bold;
+  color: #0000;
+  -webkit-text-stroke: 1px #000000;
+  background:
+    radial-gradient(1.13em at 50% 1.6em,#bb7fff 99%,#0000 101%) calc(50% - 1.6em) 0/3.2em 100% text,
+    radial-gradient(1.13em at 50% -0.8em,#0000 99%,#9343fc 101%) 50% .8em/3.2em 100% repeat-x  text;
+  animation: l9 2s linear infinite;
+}
+@keyframes l9 {
+  to {background-position: calc(50% + 1.6em) 0,calc(50% + 3.2em) .8em}
+}
 .underOverLine{
   margin-left: 18%;
   width: 100%;
@@ -288,6 +305,24 @@ option:last-of-type{
   top: 85px;
   left: 29px;
 }
+.moonBall {
+  width: 50px;
+  aspect-ratio: 1;
+  background-color: #8b0fff;
+  border-radius: 50%;
+  animation: l4 0.4s infinite;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+@keyframes l4 {
+  12.5% {background-image:radial-gradient(80% 65% at left, #0000 94%,rgba(203, 118, 252, 0.6))}
+  25%   {background-image:linear-gradient(90deg,#0000 50%,rgba(216, 131, 255, 0.6) 0)}
+  37.5% {background-image:radial-gradient(80% 65% at right,rgba(209, 109, 255, 0.6) 94%,#0000)}
+  50%   {background-image:linear-gradient(rgba(233, 121, 255, 0.6) 0 0)}
+  62.5% {background-image:radial-gradient(80% 65% at left, rgba(232, 125, 253, 0.6) 94%,#0000)}
+  75%   {background-image:linear-gradient(-90deg,#0000 50%,rgba(239, 161, 255, 0.6) 0)}
+  87.5% {background-image:radial-gradient(80% 65% at right,#0000 94%,rgba(233, 124, 255, 0.6))}
+}
 </style>
 <div class="SawFilesSelection" id="selectorBox">
   <select id='codes' name='codes'>
@@ -301,8 +336,9 @@ option:last-of-type{
   <!---list of files in chosen folder-->
   </div>
   <div id="USBFolderList" class="fileList"> <!---Right USB/Network browser-->
-    <span class="underOverLine">Loading Available Drives...</span><br/>
-    <span style="margin-left:37%">Please Wait...</span>
+    <div class="loader">Loading Available Drives...</div>
+    <div class="moonBall"></div>
+    <div class="loader" style="margin-left:37%">Please Wait...</div>
 
 
 
