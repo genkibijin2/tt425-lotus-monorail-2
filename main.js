@@ -72,6 +72,22 @@ catch(err){
 }
 });
 
+//Method to show contents of selected USB
+ipcMain.on("readContentsOfUSB", (event, chosenUSBPath) => {
+  try{
+    fs.readdir(chosenUSBPath, (err, USBFiles) => {
+    USBFiles.forEach(USBFile => {
+      console.log("USB File Found: " + USBFile);
+      event.reply("USBFileSentBack", USBFile);
+      console.log(USBFile + " sent to preload.js");
+    })
+  });
+}
+  catch(err){
+    console.error(err);
+  }
+});
+
 
 //Method to list out USB devices (console)
 ipcMain.on("listUSBDevices", async (event) => {

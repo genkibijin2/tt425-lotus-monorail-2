@@ -7,6 +7,9 @@ const helper = document.getElementById('helper');
 //Performance Mode Box
 const information = document.getElementById('info');
 
+//loading box
+const loadingBox = document.getElementById('loadingBlock');
+
 //default mode--//
 information.innerText = "Standard Mode";
 document.getElementById('shaderCanvas').setAttribute("width","854");
