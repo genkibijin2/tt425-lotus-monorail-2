@@ -181,9 +181,14 @@ const sandbox = new GlslCanvas(canvas);
   0 0 0.2em rgb(0, 0, 0);
 }
 #buttonToolbar{
-   border: 2px solid purple; 
-   min-height: 50px;
-   max-height:51px;
+  position: absolute;
+   /*border: 2px solid purple; */
+   min-height: 51px;
+   max-height: 51px;
+   min-width: 960px;
+   max-width: 960px;
+   left: 28px;
+   top: 660px;
    display: flex;
 }
 .underOverLine{
@@ -310,7 +315,8 @@ option:last-of-type{
 <div id="buttonToolbar"> <!---HOLDS BUTTONS FOR ACTIONS, CONVERSION ETC-->
 <style>
   #loadSawFiles{
-    background-image: url(img/nowt.png);
+    background: black;
+    background-image: none;
     color: white;
     box-shadow: 1px 1px white;
     border: 1px solid black;
@@ -328,7 +334,7 @@ option:last-of-type{
   }
 </style>
 <button id="loadSawFiles">
-  Refresh
+  Refresh All
 </button>
 </div>
 
@@ -349,6 +355,9 @@ option:last-of-type{
   background: white;
   color: black;
   }
+@keyframes l6 {
+    100% {inset:0}
+}
 </style>
 <div id="helper" class="helperDaemon" style="font-size: 18px;text-align: left;border:
            1px solid black;border-radius: 20px;padding:4px;position: absolute;left:

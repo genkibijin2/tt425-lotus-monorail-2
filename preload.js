@@ -34,11 +34,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //startupFileCheck
   ipcRenderer.send("readSawFilesFolder", "c:\\sawfiles_two\\");
   
-  
+  refreshSawButton.addEventListener("mouseenter", () => {
+    helper.innerText = "Reload all .prt saw files and USB drive selection";
+  });
   
   refreshSawButton.addEventListener("click", () => {
     loadingBox.style.opacity = "100%";
+    helper.innerText = "Refreshing USB Drives and .prt files...";
     refreshSawButton.style.backgroundImage = "url(img/waves.gif)";
+    
     ipcRenderer.send("listUSBDevices");
     numberOfFilesInFolder = 0;
     leftHandFileList.innerHTML = "";
@@ -124,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
           "</b></span><br/><br/>"
         );
         loadingBox.style.opacity = "0%"; 
-        refreshSawButton.style.backgroundImage = "url(img/nowt.png)";
+        refreshSawButton.style.backgroundImage = "none";
         helper.innerText = "Done loading drive " + theCurrentlySelectedUSBPath;
       });
     }
@@ -135,9 +139,9 @@ document.addEventListener('DOMContentLoaded', function () {
         helper.innerText = "Cannot use this drive...";
       })
     }
-    
-    
-   loadingBox.style.opacity = "0%"; 
+    helper.innerText = "Done...";
+    refreshSawButton.style.backgroundImage = "none";
+    loadingBox.style.opacity = "0%"; 
   });
 
   ipcRenderer.on("USBFileSentBack", (event, nameOfFile) => {
