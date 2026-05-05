@@ -1,6 +1,7 @@
 ﻿# tt425-lotus-monorail-2
 Porting the original TT425 to electron using Javascript and node.js.<br>
-From there, I'll add the planned features of the original to this version, which includes networking and hotswappable drive updates.
+Will likely never be finished and is more about me getting used to electron.
+I'm only keeping it here for archive purposes.
 
 ![ScreenShotGif161225](https://github.com/user-attachments/assets/20cfd33c-e1d4-4647-8ae1-20f88699bf25)
 <br>
